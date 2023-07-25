@@ -10,10 +10,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}><Route path="/admin" element={<Admin />}></Route>
-        <Route path="/user" element={<User />}></Route></Route>
-        
+        <Route path="/" element={<App />}>
+          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/user" element={<User />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
-); 
+);
