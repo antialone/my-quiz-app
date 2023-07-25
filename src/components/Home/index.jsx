@@ -1,5 +1,5 @@
-function Home(props) {
-    return  <div></div>  
+function HomePage(props) {
+    return  <div className="homepage-container">Home Page</div>  
 }
 
-export default Home;
+export default HomePage;
