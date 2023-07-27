@@ -10,7 +10,7 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import { FaGem, FaGithub } from "react-icons/fa";
-import { DiReact } from "react-icons/Di";
+import { DiReact } from "react-icons/di";
 import { MdDashboard } from "react-icons/md";
 import { Link } from "react-router-dom";
 
