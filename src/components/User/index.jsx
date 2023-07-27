@@ -1,5 +1,9 @@
 function User(props) {
-    return  <div>Users Page</div>  
+  return (
+    <div className="text-red-800">
+     UserPage
+    </div>
+  );
 }
 
 export default User;
