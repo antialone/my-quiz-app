@@ -14,7 +14,7 @@ function Header() {
             <NavLink className="nav-link" to="/">
               Home
             </NavLink>
-            <NavLink className="nav-link" to="/admin">
+            <NavLink className="nav-link" to="/admins">
               Admin
             </NavLink>
             <NavLink className="nav-link active:to-blue-400" to="/user">

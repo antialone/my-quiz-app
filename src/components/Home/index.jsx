@@ -14,8 +14,8 @@ function HomePage(props) {
           And your audience won't answer one.
           Create a type form instead-and make everyone happy
         </div>
-        <div className="h-[40px] text-[25px]">
-          <button>Get's stated. it's free</button>
+        <div className="h-[40px] text-[20px] ">
+          <button className="border-none px-3 py-2 bg-slate-700 rounded-xl text-white ">Get's stated. it's free</button>
         </div>
       </div>
     </div>
