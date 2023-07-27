@@ -1,3 +1,4 @@
 import DashBoard from "./DashBoard"; 
 import ManageUser from "./ManageUser";
-export {DashBoard, ManageUser}
+import ModalUser from "./ModalUser";
+export {DashBoard, ManageUser,ModalUser } 

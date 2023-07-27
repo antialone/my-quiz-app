@@ -1,4 +1,3 @@
-import FormSignIn from "./FormSignIn";
 import ModalUser from "./ModalUser";
 function ManageUser(props) {
   return (
@@ -6,11 +5,10 @@ function ManageUser(props) {
       <div className="title">Manager User</div>
       <div className="user-content">
         <div>
-          <button>
-            <ModalUser />
-          </button>
+          <button>Add user</button>
         </div>
         <div>table user</div>
+        <ModalUser />
       </div>
     </div>
   );

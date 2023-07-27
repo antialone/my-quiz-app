@@ -1,5 +1,5 @@
 function DashBoard(props) {
-    return ( <div>dash board</div> )
+  return <div>dash board</div>;
 }
 
-export default DashBoard
+export default DashBoard;

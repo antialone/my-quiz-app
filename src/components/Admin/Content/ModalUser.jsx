@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import FormSignIn from "./FormSignIn";
+import ModalAddUser from "./ModalAddUser";
 
 function ModalUser() {
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ function ModalUser() {
           <Modal.Title>Add New User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormSignIn />
+          <ModalAddUser />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
