@@ -10,8 +10,9 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import { FaGem, FaGithub } from "react-icons/fa";
-import { DiReact } from "react-icons/Di";
 import { MdDashboard } from "react-icons/md";
+import { DiReact } from "react-icons/di";
+
 import { Link } from "react-router-dom";
 
 function SideBar(props) {

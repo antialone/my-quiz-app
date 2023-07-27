@@ -7,7 +7,6 @@
     .navbar {
       z-index: 10;
       background-color: rgba(0, 0, 0, 0) !important;
-
       .nav-link {
         &.active {
           color: red;
@@ -16,22 +15,12 @@
     }
   }
 }
-
-// @media (min-width:1350px) {
-//   .container,
-//   .container-lg,
-//   .container-md,
-//   .container-sm,
-//   .container-xl {
-//     max-width: 1300px
-//   }
-// }
 .pro-sidebar-inner {
   height: 100vh !important;
 }
-
 video {
   position: fixed;
   bottom: 0;
   width: 100vw;
 }
+
