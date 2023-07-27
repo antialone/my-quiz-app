@@ -1,5 +1,9 @@
 import "react-pro-sidebar/dist/css/styles.css";
 import sidebarBg from "../../assets/bg2.jpg";
+import { FaGem, FaGithub } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
+import { DiReact } from "react-icons/di";
+import { Link } from "react-router-dom";
 import {
   ProSidebar,
   Menu,
@@ -9,11 +13,7 @@ import {
   SidebarFooter,
   SidebarContent,
 } from "react-pro-sidebar";
-import { FaGem, FaGithub } from "react-icons/fa";
-import { MdDashboard } from "react-icons/md";
-import { DiReact } from "react-icons/di";
 
-import { Link } from "react-router-dom";
 
 function SideBar(props) {
   const { image, collapsed, toggled, handleToggleSidebar } = props;
