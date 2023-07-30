@@ -1,4 +1,4 @@
 import DashBoard from "./DashBoard"; 
 import ManageUser from "./ManageUser";
-import ModalUser from "./ModalUser";
-export {DashBoard, ManageUser,ModalUser } 
+import ModalCreateUser from "./ModalCreateUser";
+export {DashBoard, ManageUser,ModalCreateUser } 

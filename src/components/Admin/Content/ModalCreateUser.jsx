@@ -1,0 +1,178 @@
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import { FcPlus } from "react-icons/fc";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+function ModalCreateUser(props) {
+  const { show, setShow } = props;
+  const handleClose = () => {
+    setShow(false),
+      setEmail(""),
+      setImage(""),
+      setRole("USER"),
+      setPassWord(""),
+      setUsername("");
+  };
+  const handleShow = () => setShow(true);
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassWord] = useState("");
+  const [role, setRole] = useState("USER");
+  const [image, setImage] = useState("");
+  const [previewImage, SetPreviewImage] = useState("");
+  const handleUploadImage = (e) => {
+    // nếu người dùng k up ảnh thì k set
+    if (e.target && e.target.files && e.target.files[0]) {
+      setImage(e.target.files[0]),
+        SetPreviewImage(URL.createObjectURL(e.target.files[0]));
+    } else {
+      // SetPreviewImage("");
+    }
+  };
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  const handleSubmitCreateUser = async () => {
+    //validate
+    const isValidateEmail = validateEmail(email);
+    if (!isValidateEmail) {
+      toast.error("invalid email");
+      return;
+    }
+    if(!password) {
+      toast.error('Password must be required');
+    }
+    //call api Form axios
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    data.append("username", username);
+    data.append("role", role);
+    data.append("userImage", image);
+    let res = await axios.post(
+      "http://localhost:8081/api/v1/participant",
+      data
+    );
+//EC --> error code 
+//EM --> error mess
+//res-->  dữ liêuj từ backend phản hồi. res.data
+    console.log("check resss ===>>", res.data)
+    if (res.data && res.data.EC === 0){
+      toast.success(res.data.EM);
+      handleClose()
+    }
+    if (res.data && res.data.EC !== 0) {
+      toast.error(res.data.EM)
+    }
+  };
+  return (
+    <>
+      <Modal show={show} onHide={handleClose} size="xl" backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Add New User</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div>
+            <form className="row g-3">
+              <div className="col-md-6">
+                <label className="form-label">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  className="form-control"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="col-md-6">
+                <label className="form-label">Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  className="form-control"
+                  onChange={(e) => {
+                    setPassWord(e.target.value);
+                  }}
+                />
+              </div>
+
+              <div className="col-md-6">
+                <label className="form-label">username</label>
+                <input
+                  type="text"
+                  value={username}
+                  className="form-control"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="col-md-4">
+                <label className="form-label">Role</label>
+                <select
+                  id="inputState"
+                  value={role}
+                  onChange={(e) => {
+                    setRole(e.target.value);
+                  }}
+                  className="form-select"
+                >
+                  <option>User</option>
+                  <option>Admin</option>
+                </select>
+              </div>
+              <div className="col-md-12">
+                <label
+                  htmlFor="label-upload"
+                  className="form-label  w-fit px-4 py-2 bg-gray-200 hover:bg-slate-300 active:bg-slate-500 cursor-pointer flex items-center gap-2 rounded-md "
+                >
+                  <FcPlus /> Upload File Image
+                </label>
+                <input
+                  type="file"
+                  hidden
+                  id="label-upload"
+                  onChange={(e) => {
+                    handleUploadImage(e);
+                  }}
+                />
+              </div>
+              <div className=" img-preview h-[300px] border-dashed	border-[1px] border-red-800 flex items-center justify-center  text-gray-500 ">
+                {previewImage ? (
+                  <img
+                    className="max-h-[100%] max-w-[100%] object-contain"
+                    src={previewImage}
+                  />
+                ) : (
+                  <span>Preview Image</span>
+                )}
+              </div>
+            </form>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              handleSubmitCreateUser();
+            }}
+          >
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
+
+export default ModalCreateUser;

@@ -10,10 +10,14 @@ function ModalAddUser() {
   const [previewImage, SetPreviewImage] = useState("");
   const handleUploadImage = (e) => {
     // nếu người dùng k up ảnh thì k set
-    if(e.target && e.target.files && e.target.files[0])
-   { setImage(e.target.files[0]),SetPreviewImage(URL.createObjectURL(e.target.files[0]))}
-   else {SetPreviewImage('')}
-  };
+    if (e.target && e.target.files && e.target.files[0]) {
+      setImage(e.target.files[0]),
+        SetPreviewImage(URL.createObjectURL(e.target.files[0]));
+    } else {
+      // SetPreviewImage("");
+    }
+  }
+  
   return (
     <div>
       <form className="row g-3">
@@ -77,7 +81,7 @@ function ModalAddUser() {
             hidden
             id="label-upload"
             onChange={(e) => {
-             handleUploadImage(e)
+              handleUploadImage(e);
             }}
           />
         </div>
