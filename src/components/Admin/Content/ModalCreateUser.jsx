@@ -2,8 +2,8 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { postCreateNewUser } from "../../services/apiService";
 
 function ModalCreateUser(props) {
   const { show, setShow } = props;
@@ -39,7 +39,7 @@ function ModalCreateUser(props) {
       );
   };
   const handleSubmitCreateUser = async () => {
-    //validate
+    // validate
     const isValidateEmail = validateEmail(email);
     if (!isValidateEmail) {
       toast.error("invalid email");
@@ -48,27 +48,19 @@ function ModalCreateUser(props) {
     if(!password) {
       toast.error('Password must be required');
     }
-    //call api Form axios
-    const data = new FormData();
-    data.append("email", email);
-    data.append("password", password);
-    data.append("username", username);
-    data.append("role", role);
-    data.append("userImage", image);
-    let res = await axios.post(
-      "http://localhost:8081/api/v1/participant",
-      data
-    );
+    //call api Form axios từ function  postCreateNewUser
+  
+    let data =  await postCreateNewUser(email, password, username, role, image)
+    console.log("🚀 ~ file: ModalCreateUser.jsx:54 ~ handleSubmitCreateUser ~ data:", data)
 //EC --> error code 
 //EM --> error mess
 //res-->  dữ liêuj từ backend phản hồi. res.data
-    console.log("check resss ===>>", res.data)
-    if (res.data && res.data.EC === 0){
-      toast.success(res.data.EM);
+    if (data && data.EC === 0){
+      toast.success(data.EM);
       handleClose()
     }
-    if (res.data && res.data.EC !== 0) {
-      toast.error(res.data.EM)
+    if (data && data.EC !== 0) {
+      toast.error(data.EM)
     }
   };
   return (
