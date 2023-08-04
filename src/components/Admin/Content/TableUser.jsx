@@ -1,6 +1,6 @@
 import { useState } from "react";
 const TableUser = (props) => {
-  const {listUsers} = props
+  const { listUsers } = props;
 
   return (
     <>
@@ -24,11 +24,31 @@ const TableUser = (props) => {
                   <td>{item.username}</td>
                   <td>{item.email}</td>
                   <td>{item.role}</td>
-                  <td className=" flex gap-2" >
-                    <button className="btn btn-secondary">View</button>
-                    <button className="btn btn-warning" onClick={()=>{props.handleClickBtnUpdate(item)}}>Update</button>
-                    <button className="btn btn-danger">Delete</button>
-
+                  <td className=" flex gap-2">
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => {
+                        props.handleClickBtnView(item);
+                      }}
+                    >
+                      View
+                    </button>
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => {
+                        props.handleClickBtnUpdate(item);
+                      }}
+                    >
+                      Update
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        props.handleClickBtDelete(item);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
