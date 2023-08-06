@@ -26,7 +26,7 @@ function ModalUpdateUser(props) {
 
   //
   useEffect(() => {
-    if (!_.isEmpty(dataUpdate))  {
+    if (!_.isEmpty(dataUpdate)) {
       setEmail(dataUpdate.email);
       setRole(dataUpdate.role);
       setUsername(dataUpdate.username);
@@ -62,7 +62,7 @@ function ModalUpdateUser(props) {
     //call api Form axios từ function  postCreateNewUser
 
     let data = await putUpdateUser(dataUpdate.id, username, role, image);
-  
+
     //EC --> error code
     //EM --> error mess
     //res-->  dữ liêuj từ backend phản hồi. res.data

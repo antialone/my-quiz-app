@@ -10,7 +10,7 @@ import ModalDeleteUser from "./ModalDeleteUser";
 function ManageUser(props) {
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
-  const [showModelDeleteUser,setShowModelDeleteUser] =useState(false)
+  const [showModelDeleteUser, setShowModelDeleteUser] = useState(false);
   const [showModalView, setShowModalView] = useState(false);
   const [dataUpdate, setDataUpdate] = useState({});
   const [dataDelete, setDataDelete] = useState({});
@@ -36,10 +36,10 @@ function ManageUser(props) {
   const resetUpdateData = () => {
     setDataUpdate({});
   };
-  const handleClickBtDelete =(user)=>{
-    setDataDelete(user)
-    setShowModelDeleteUser(true)
-  }
+  const handleClickBtDelete = (user) => {
+    setDataDelete(user);
+    setShowModelDeleteUser(true);
+  };
   return (
     <div className="manage-user-container p-[10px]">
       <div className="title font-semibold text-xl  ">Manager User</div>
@@ -56,7 +56,7 @@ function ManageUser(props) {
           <TableUser
             listUsers={listUsers}
             handleClickBtnUpdate={handleClickBtnUpdate}
-            handleClickBtnView ={handleClickBtnView}
+            handleClickBtnView={handleClickBtnView}
             handleClickBtDelete={handleClickBtDelete}
           />
         </div>
@@ -77,8 +77,14 @@ function ManageUser(props) {
           setShow={setShowModalView}
           dataUpdate={dataUpdate}
         />
-        <ModalDeleteUser dataDelete = {dataDelete}
-        handleClickBtDelete={handleClickBtDelete} show ={showModelDeleteUser} setShow = {setShowModelDeleteUser}/>
+        <ModalDeleteUser
+          dataDelete={dataDelete}
+          handleClickBtDelete={handleClickBtDelete}
+          show={showModelDeleteUser}
+          setShow={setShowModelDeleteUser}
+          fetchListUsers={fetchListUsers}
+
+        />
       </div>
     </div>
   );
