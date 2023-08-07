@@ -58,11 +58,8 @@ function ModalUpdateUser(props) {
       toast.error("invalid email");
       return;
     }
-
     //call api Form axios từ function  postCreateNewUser
-
     let data = await putUpdateUser(dataUpdate.id, username, role, image);
-
     //EC --> error code
     //EM --> error mess
     //res-->  dữ liêuj từ backend phản hồi. res.data
